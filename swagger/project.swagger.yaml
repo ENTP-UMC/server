@@ -1,0 +1,109 @@
+/project:
+    post:
+      tags:
+        - project
+      summary: 프로젝트 모집글 업로드
+      parameters:
+      - name: post
+        in: body
+        required: true
+        schema:
+          properties:
+            user_id:
+            name:
+              type: string
+              description: 프로젝트 이름
+              example: ENTP
+            title:
+              type: string
+              description: 프로젝트 모집글 제목
+              example: ENTP 프로젝트를 함께 할 팀원을 찾습니다
+            content:
+              type: string
+              description: 프로젝트 모집글 내용
+              example: 프로젝트 모집글 내용
+            period:
+              type: string
+              description : 예상 기간
+              example: 3개월
+            start_date:
+              type: string
+              description: 시작 날짜
+              example: 2024-01-03
+            contact:
+              type: string
+              description: 연락 방법
+              example: 오픈채팅
+            contact_url:
+              type: string
+              description: 연락 링크
+              example: 오픈채팅 링크
+            project_tag:
+              type: array
+              description: 프로젝트 태그
+              example: [1, 5, 8]
+      responses:
+        '200':
+          description: 프로젝트 모집글 게시 성공!
+          schema:
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 200
+              isSuccess:
+                type: boolean
+                example: true
+              code:
+                type: integer
+                example: 2000
+              message:
+                type: string
+                example: "success!"
+              data:
+                type: object
+                example: {
+                  "name": "ENTP",
+                  "title": "ENTP 프로젝트를 함께 할 팀원을 찾습니다",
+                  "content": "프로젝트 모집글 내용",
+                  "period": "3개월",
+                  "start_date": "2024-01-03",
+                  "contact": "오픈채팅",
+                  "contact_url": "오픈채팅 링크"
+                }
+                
+        '400':
+          description: 잘못된 요청
+          schema:
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 400
+              isSuccess:
+                type: boolean
+                example: false
+              code:
+                type: integer
+                example: COMMON001
+              message:
+                type: string
+                example: 잘못된 요청입니다
+
+        '500':
+          description: 서버 에러
+          schema:
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 500
+              isSuccess:
+                type: boolean
+                example: false
+              code:
+                type: integer
+                example: COMMON000
+              message:
+                type: string
+                example: 서버 에러, 관리자에게 문의 바랍니다.
