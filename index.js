@@ -11,6 +11,7 @@ import { healthRoute } from './src/routes/health.route.js';
 import {kakaoRoute } from './src/routes/kakao.route.js'
 import { userRoute } from './src/routes/user.route.js';
 import { tagRoute } from './src/routes/tag.route.js';
+import { hobbyRoute } from './src/routes/hobby.route.js';
 dotenv.config();    // .env 파일 사용 (환경 변수 관리)
 
 const app = express();
@@ -23,7 +24,7 @@ app.use(express.json());                    // request의 본문을 json으로 �
 app.use(express.urlencoded({extended: false})); // 단순 객체 문자열 형태로 본문 데이터 해석
 
 
-
+app.use('/hobbies',hobbyRoute);
 app.use('/user',userRoute);
 app.use('/api-docs', SwaggerUi.serve, SwaggerUi.setup(specs));
 app.use('/kakao', kakaoRoute);

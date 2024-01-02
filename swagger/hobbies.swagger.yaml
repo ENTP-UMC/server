@@ -1,0 +1,389 @@
+/hobbies/:
+    
+    post:
+      tags:
+        - Hobby
+      summary: 소모임 생성
+      parameters:
+      - name: add
+        in: body
+        required: true
+        schema:
+          properties:
+            title:
+              type: String
+              description: 제목
+              example: 클라이밍 좋아하시는 분 소모임 모집해요!
+           
+            content:
+              type: string
+              description: 소개
+              example: 안녕하세요! 클라이밍 모집합니다
+            total_num:
+              type: integer
+              description: 총 인원
+              example: 8
+            start_date:
+              type: datetime
+              description: 시작 날짜
+              example: 2024-01-13
+            end_date:
+              type: datetime
+              description: 종료 날짜
+              example: 2024-07-12
+            tag:
+              type: integer
+              descrption: 태그 삽입
+              exapmple: 6
+            user_id:
+              type: integer
+              description: 유저 아이디
+              example: 11
+            
+            
+      responses:
+        '200':
+          description: 회원 가입 성공!
+          schema:
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 200
+              isSuccess:
+                type: boolean
+                example: true
+              code:
+                type: integer
+                example: 2000
+              message:
+                type: string
+                example: "success!"
+              data:
+                type: object
+                example: {
+                  "id" : 0000
+                }
+                
+        '400':
+          description: 잘못된 요청
+          schema:
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 400
+              isSuccess:
+                type: boolean
+                example: false
+              code:
+                type: integer
+                example: COMMON001
+              message:
+                type: string
+                example: 잘못된 요청입니다
+
+        '500':
+          description: 서버 에러
+          schema:
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 500
+              isSuccess:
+                type: boolean
+                example: false
+              code:
+                type: integer
+                example: COMMON000
+              message:
+                type: string
+                example: 서버 에러, 관리자에게 문의 바랍니다.
+/hobbies/scrap:
+    
+    post:
+      tags:
+        - Hobby
+      summary: 스크랩 생성
+      parameters:
+      - name: add
+        in: body
+        required: true
+        schema:
+          properties:
+            user_id:
+              type: integer
+              description: 스크랩한 유저
+              example: 11
+           
+            hobby_group_id:
+              type: integer
+              description: 스크랩한 게시물
+              example: 12
+            
+            
+            
+      responses:
+        '200':
+          description: 스크랩 성공!
+          schema:
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 200
+              isSuccess:
+                type: boolean
+                example: true
+              code:
+                type: integer
+                example: 2000
+              message:
+                type: string
+                example: "success!"
+              data:
+                type: object
+                example: {
+                  "id" : 0000
+                }
+                
+        '400':
+          description: 잘못된 요청
+          schema:
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 400
+              isSuccess:
+                type: boolean
+                example: false
+              code:
+                type: integer
+                example: COMMON001
+              message:
+                type: string
+                example: 잘못된 요청입니다
+
+        '500':
+          description: 서버 에러
+          schema:
+            type: object
+            properties:
+              status:
+                type: integer
+                example: 500
+              isSuccess:
+                type: boolean
+                example: false
+              code:
+                type: integer
+                example: COMMON000
+              message:
+                type: string
+                example: 서버 에러, 관리자에게 문의 바랍니다.
+/hobbies/1:
+  get:
+        tags:
+          - hobby
+        summary: 소모임 최신 순
+        responses:
+          '200':
+            description: 정보 성공!
+            schema:
+              type: object
+              properties:
+                status:
+                  type: integer
+                  example: 200
+                isSuccess:
+                  type: boolean
+                  example: true
+                code:
+                  type: integer
+                  example: 2000
+                message:
+                  type: string
+                  example: "success!"
+                data:
+                  type: object
+                  example: {
+                    "id" : 0000
+                  }
+                  
+          '400':
+            description: 잘못된 요청
+            schema:
+              type: object
+              properties:
+                status:
+                  type: integer
+                  example: 400
+                isSuccess:
+                  type: boolean
+                  example: false
+                code:
+                  type: integer
+                  example: COMMON001
+                message:
+                  type: string
+                  example: 잘못된 요청입니다
+
+          '500':
+            description: 서버 에러
+            schema:
+              type: object
+              properties:
+                status:
+                  type: integer
+                  example: 500
+                isSuccess:
+                  type: boolean
+                  example: false
+                code:
+                  type: integer
+                  example: COMMON000
+                message:
+                  type: string
+                  example: 서버 에러, 관리자에게 문의 바랍니다.
+/hobbies/2:
+  get:
+        tags:
+          - hobby
+        summary: 소모임 좋아요 순
+        responses:
+          '200':
+            description:  정보 성공!
+            schema:
+              type: object
+              properties:
+                status:
+                  type: integer
+                  example: 200
+                isSuccess:
+                  type: boolean
+                  example: true
+                code:
+                  type: integer
+                  example: 2000
+                message:
+                  type: string
+                  example: "success!"
+                data:
+                  type: object
+                  example: {
+                    "id" : 0000
+                  }
+                  
+          '400':
+            description: 잘못된 요청
+            schema:
+              type: object
+              properties:
+                status:
+                  type: integer
+                  example: 400
+                isSuccess:
+                  type: boolean
+                  example: false
+                code:
+                  type: integer
+                  example: COMMON001
+                message:
+                  type: string
+                  example: 잘못된 요청입니다
+
+          '500':
+            description: 서버 에러
+            schema:
+              type: object
+              properties:
+                status:
+                  type: integer
+                  example: 500
+                isSuccess:
+                  type: boolean
+                  example: false
+                code:
+                  type: integer
+                  example: COMMON000
+                message:
+                  type: string
+                  example: 서버 에러, 관리자에게 문의 바랍니다.
+/hobbies/3:
+  post:
+        tags:
+          - hobby
+        summary: 소모임 태그 조회
+
+        parameters:
+        - name: add
+          in: body
+          required: true
+          schema:
+            properties:
+              keyword:
+                type: String
+                description: 찾고자 하는 내용
+                example: 클라이밍 
+           
+        responses:
+          '200':
+            description: 유저 정보 성공!
+            schema:
+              type: object
+              properties:
+                status:
+                  type: integer
+                  example: 200
+                isSuccess:
+                  type: boolean
+                  example: true
+                code:
+                  type: integer
+                  example: 2000
+                message:
+                  type: string
+                  example: "success!"
+                data:
+                  type: object
+                  example: {
+                    "id" : 0000
+                  }
+                  
+          '400':
+            description: 잘못된 요청
+            schema:
+              type: object
+              properties:
+                status:
+                  type: integer
+                  example: 400
+                isSuccess:
+                  type: boolean
+                  example: false
+                code:
+                  type: integer
+                  example: COMMON001
+                message:
+                  type: string
+                  example: 잘못된 요청입니다
+
+          '500':
+            description: 서버 에러
+            schema:
+              type: object
+              properties:
+                status:
+                  type: integer
+                  example: 500
+                isSuccess:
+                  type: boolean
+                  example: false
+                code:
+                  type: integer
+                  example: COMMON000
+                message:
+                  type: string
+                  example: 서버 에러, 관리자에게 문의 바랍니다.
