@@ -41,3 +41,25 @@ export const getProjectTagToProjectID = async (projectID) => {
         throw new BaseError(status.PARAMETER_IS_WRONG);
     }
 }
+
+// export const setProjectStack = async (project_id, stack_id) => {
+//     try{
+//         const conn = await pool.getConnection();
+//         const stack = await pool.query(getStackToProjectID, []);
+//         conn.release();
+//         return stack;
+//     } catch(err) {
+//         throw new BaseError(status.PARAMETER_IS_WRONG);
+//     }
+// }
+
+// export const getProjectStackToProjectID = async (projectID) => {
+//     try{
+//         const conn = await pool.getConnection();
+//         const stack = await pool.query(getStackToProjectID, projectID);
+//         conn.release();
+//         return stack;
+//     } catch(err) {
+//         throw new BaseError(status.PARAMETER_IS_WRONG);
+//     }
+// }

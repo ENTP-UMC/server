@@ -1,7 +1,7 @@
 import { BaseError } from "../../config/error.js";
 import { status } from "../../config/response.status.js";
 import { postResponseDTO, getResponseDTO } from "../dtos/project.dto.js"
-import { postProject, setProjectTag, getProjectTagToProjectID, setProjectStack } from "../models/project.dao.js";
+import { postProject, setProjectTag, getProjectTagToProjectID, setProjectStack, getProjectStackToProjectID } from "../models/project.dao.js";
 
 export const uploadProject = async (body) => {
     console.log("body is", body);
@@ -25,6 +25,10 @@ export const uploadProject = async (body) => {
         for (let i = 0; i < body.project_tag.length; i++) {
             await setProjectTag(uploadProjectData, body.project_tag[i]);
         }
+        // for (let i = 0; i < body.project_stack.length; i++) {
+        //     console.log("uploadProjectData is", uploadProjectData);
+        //     await setProjectStack(uploadProjectData, body.project_stack[i][0]);
+        // }
         return postResponseDTO(uploadProjectData);
     }
 }

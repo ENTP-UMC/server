@@ -42,6 +42,10 @@
               type: array
               description: 프로젝트 태그
               example: [1, 5, 8]
+            project_stack:
+              type: int
+              description: 스택별 모집 인원
+              example: 0
       responses:
         '200':
           description: 프로젝트 모집글 게시 성공!
