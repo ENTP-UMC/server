@@ -10,6 +10,7 @@ import { status } from './config/response.status.js';
 import { healthRoute } from './src/routes/health.route.js';
 import {kakaoRoute } from './src/routes/kakao.route.js'
 import { userRoute } from './src/routes/user.route.js';
+import { tagRoute } from './src/routes/tag.route.js';
 dotenv.config();    // .env 파일 사용 (환경 변수 관리)
 
 const app = express();
@@ -27,6 +28,7 @@ app.use('/user',userRoute);
 app.use('/api-docs', SwaggerUi.serve, SwaggerUi.setup(specs));
 app.use('/kakao', kakaoRoute);
 app.use('/health', healthRoute);
+app.use('/tags',tagRoute);
 
 app.get('/', (req, res, next) => {
     res.send(response(status.SUCCESS, "루트 페이지!"));
