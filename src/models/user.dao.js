@@ -1,7 +1,7 @@
 import { pool } from "../../config/db.config.js";
 import { BaseError } from "../../config/error.js";
 import { status } from "../../config/response.status.js";
-import { insertUserSql } from "./user.sql.js";
+import { insertUserSql,getUserID } from "./user.sql.js";
 
 
 //user data 추가
@@ -21,23 +21,24 @@ export const addUser = async (data) => {
     }
 }
 
-// 사용자 정보 얻기
-// export const getUser = async (userId) => {
-//     try {
-//         const conn = await pool.getConnection();
-//         const [user] = await pool.query(getUserID, userId);
+//사용자 정보 얻기
+export const getUser = async () => {
+    try {
+        const conn = await pool.getConnection();
+        const [user] = await pool.query(getUserID,"11");
 
-//         console.log(user);
+        console.log(user);
 
-//         if(user.length == 0){
-//             return -1;
-//         }
+        if(user.length == 0){
+            return -1;
+        }
 
-//         conn.release();
-//         return user;
+        conn.release();
+
+        return user;
         
-//     } catch (err) {
-//         throw new BaseError(status.PARAMETER_IS_WRONG);
-//     }
-// }
+    } catch (err) {
+        throw new BaseError(status.PARAMETER_IS_WRONG);
+    }
+}
 

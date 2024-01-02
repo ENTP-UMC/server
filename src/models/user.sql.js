@@ -6,7 +6,7 @@
 
 export const insertUserSql = "INSERT INTO user (id, nickname,school,phone)VALUES (?,?,?,?) ON DUPLICATE KEY UPDATE id=?,nickname=?,school=?,phone=? ;";
 
-export const getUserID = "SELECT * FROM customer WHERE id = ?";
+export const getUserID = "SELECT * FROM user WHERE id = ?";
 
 export const connectFoodCategory = "INSERT INTO favorite_food (customer,food) VALUES (?, ?);";
 

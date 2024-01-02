@@ -1,7 +1,7 @@
 import { BaseError } from "../../config/error.js";
 import {status} from "../../config/response.status.js"
 import {signinResponseDTO} from "../dtos/user.dto.js"
-import {addUser} from "../models/user.dao.js"
+import {addUser,getUser} from "../models/user.dao.js"
 
 export const joinUser = async (body) => {
     
@@ -16,4 +16,11 @@ export const joinUser = async (body) => {
    
         return signinResponseDTO(joinUserData);
     
+}
+
+export const viewUser = async()=>{
+
+    const getUserData = await getUser()
+        
+    return getUserData;
 }
