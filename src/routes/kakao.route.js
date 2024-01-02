@@ -1,8 +1,7 @@
 import express from "express";
-import { kakaoController } from "./controllers/kakaoController.js";
+import { KakaoController,KakaController } from "../controllers/kakao.controller";
 
-const oauthRouter = express.Router();
+export const kakaoRoute = express.Router();
 
-kakaoRouter.post(" ",KakaoController);
+kakaoRoute.post('',KakaController);
 
-export default kakaoRouter;

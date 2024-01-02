@@ -1,7 +1,8 @@
 import dotenv from "dotenv";
 import jwt from "jsonwebtoken";
-import { response } from "./config/response.js";
-import {baseResponse} from "./config/response.status.js";
+import { response } from "../../config/response.js";
+import { baseResponse } from "../../config/response.status.js";
+
 
 export const KakaoService = async(userInfo) =>{
     const email = userInfo.email;

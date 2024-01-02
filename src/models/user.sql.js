@@ -4,7 +4,7 @@
 
 
 
-export const insertUserSql = "INSERT INTO customer (id, email, name, nickname, gender, birth_date, created_at, state, phone_number)VALUES (?,?,?,?,?,?,?,?,?);";
+export const insertUserSql = "INSERT INTO user (id, nickname,school,phone)VALUES (?,?,?,?) ON DUPLICATE KEY UPDATE id=?,nickname=?,school=?,phone=? ;";
 
 export const getUserID = "SELECT * FROM customer WHERE id = ?";
 

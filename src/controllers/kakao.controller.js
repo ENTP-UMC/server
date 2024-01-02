@@ -1,10 +1,14 @@
 import axios from "axios";
 import dotenv from "dotenv";
-import { response } from "../../../config/response.js";
-import baseResponse from "../../../config/baseResponseStatus.js";
-import { KakaoService } from "./service/kakaoService.js";
+import { response } from "../../config/response.js";
+import { baseResponse } from "../../config/response.status.js";
+import { KakaoService } from "../services/kakao.service.js";
 
 dotenv.config();
+export const KakaController = (req, res, next) => {
+    res.send("HELLO, I'm Healthy!");
+};
+
 
 export const KakaoController = async(req,res)=>{
     const code = req.query.code;
