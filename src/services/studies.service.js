@@ -5,9 +5,13 @@ import {
     addStudies,
     getStudies,
     getStudiesTag,
+    getStudyLikeCnt,
+    getStudyListFlag,
+    getStudyListKeyword,
     setStudyTag,
     setUserInStudy,
 } from "../models/studies.dao.js"
+import { selectStudyLikeCnt } from "../models/studies.sql.js"
 
 export const createStudies = async (body) => {
     const createdDate = new Date()
@@ -45,9 +49,9 @@ export const createStudies = async (body) => {
 export const viewStudies = async (studyId) => {
     const getStudiesData = await getStudies(studyId)
     const getStudiesTagData = await getStudiesTag(studyId)
+    const getStudyLikeCntData = await getStudyLikeCnt(studyId)
 
-    console.log(getStudiesTagData)
-    console.log(getStudiesData)
+    console.log(getStudyLikeCntData)
 
     let howToMeet = "온라인"
     if (getStudiesData.place == 1) {
@@ -61,7 +65,6 @@ export const viewStudies = async (studyId) => {
     })
 
     if (getStudiesTagData == -1 || getStudiesData == -1) {
-        console.log("-1이에요")
         throw new BaseError(status.BAD_REQUEST)
     } else {
         const studyValue = getStudiesData[0]
@@ -78,8 +81,26 @@ export const viewStudies = async (studyId) => {
             place: howToMeet,
             contact: studyValue.contact,
             contact_url: studyValue.contact_url,
+            like_cnt: getStudyLikeCntData,
         }
-        console.log(returnValue)
         return returnValue
+    }
+}
+
+export const viewStudiesList = async (body) => {
+    // flag 1 -> 최신순, flag 2 -> 좋아요 순, 3 -> 키워드 검색
+    const searchList = []
+    if (body.body == 3) {
+        const result = await getStudyListKeyword(body.keyword)
+        searchList.append(result)
+    } else {
+        const result = await getStudyListFlag(body.flag)
+        searchList.append(result)
+    }
+
+    if (searchList[0] == -1) {
+        throw new BaseError(status.BAD_REQUEST)
+    } else {
+        return searchList[0]
     }
 }

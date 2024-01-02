@@ -15,3 +15,12 @@ export const selectStudies =
 
 export const selectStudyTag =
     "SELECT * FROM study_tag JOIN study_group_tag as sgt on study_tag.id = sgt.tag_id where sgt.group_id = ?;"
+
+export const selectStudyLikeCnt =
+    "SELECT COUNT(l.study_group_id) AS study_count, study_group_id FROM study_group AS s JOIN study_group_like AS l ON l.study_group_id = s.id WHERE study_group_id=?;"
+
+export const selectStudyKeword =
+    "SELECT * FROM study_group WHERE content LIKE '%?%' OR title LIKE '%?%' ORDER BY study_group.created_at DESC;"
+
+export const selectStudyOrder =
+    "select * from study_group ORDER BY created_at DESC;"
