@@ -1,0 +1,185 @@
+/studies:
+    post:
+        tags:
+            - Study
+        summary: 스터디 모집글 추가
+        parameters:
+            - name: addStudy
+              in: body
+              required: true
+              schema:
+                  properties:
+                      user_id:
+                          type: integer
+                          description: 유저 아이디
+                          example: 11
+                      tags:
+                          type: array
+                          description: 태그 아이디
+                          example: [8, 9]
+                      title:
+                          type: string
+                          description: 제목
+                          example: swaggerTest
+                      content:
+                          type: string
+                          description: 내용
+                          example: swaggerㄴㅁㅇㄻㄴㅇㄹㅇㅁㄴㄹㄴㄹㄴㅇㄹㅇㅋㄴㅇㄻㄴㅇㄻㄴㅇㄹㄴㅁㄹ
+                      period:
+                          type: string
+                          description: 기간
+                          example: 3개월
+                      start_date:
+                          type: string
+                          description: 시작날짜
+                          example: 2024-12-31
+                      total_num:
+                          type: int
+                          description: 모집인원
+                          example: 24
+                      place:
+                          type: int
+                          description: 온오프라인여부(1-오프라인)
+                          example: 1
+                      contact:
+                          type: string
+                          description: 연락방법
+                          example: 오픈채팅
+                      contact_url:
+                          type: string
+                          description: 오픈채팅 url
+                          example: ""
+        responses:
+            "200":
+                description: 회원 가입 성공!
+                schema:
+                    type: object
+                    properties:
+                        status:
+                            type: integer
+                            example: 200
+                        isSuccess:
+                            type: boolean
+                            example: true
+                        code:
+                            type: integer
+                            example: 2000
+                        message:
+                            type: string
+                            example: "success!"
+                        data:
+                            type: object
+                            example:
+                                {
+                                    "email": "swaggerTest@mail.com",
+                                    "name": "swagger",
+                                    "preferCategory": ["한식", "일식"],
+                                }
+
+            "400":
+                description: 잘못된 요청
+                schema:
+                    type: object
+                    properties:
+                        status:
+                            type: integer
+                            example: 400
+                        isSuccess:
+                            type: boolean
+                            example: false
+                        code:
+                            type: integer
+                            example: COMMON001
+                        message:
+                            type: string
+                            example: 잘못된 요청입니다
+
+            "500":
+                description: 서버 에러
+                schema:
+                    type: object
+                    properties:
+                        status:
+                            type: integer
+                            example: 500
+                        isSuccess:
+                            type: boolean
+                            example: false
+                        code:
+                            type: integer
+                            example: COMMON000
+                        message:
+                            type: string
+                            example: 서버 에러, 관리자에게 문의 바랍니다.
+/studies/{study-id}:
+    get:
+        tags:
+            - Study
+        summary: 특정 스터디 모집글 가져오기
+        parameters:
+            - name: study-id
+              in: path
+              schema:
+                  type: int
+        responses:
+            "200":
+                description: 회원 가입 성공!
+                schema:
+                    type: object
+                    properties:
+                        status:
+                            type: integer
+                            example: 200
+                        isSuccess:
+                            type: boolean
+                            example: true
+                        code:
+                            type: integer
+                            example: 2000
+                        message:
+                            type: string
+                            example: "success!"
+                        data:
+                            type: object
+                            example:
+                                {
+                                    "email": "swaggerTest@mail.com",
+                                    "name": "swagger",
+                                    "preferCategory": ["한식", "일식"],
+                                }
+
+            "400":
+                description: 잘못된 요청
+                schema:
+                    type: object
+                    properties:
+                        status:
+                            type: integer
+                            example: 400
+                        isSuccess:
+                            type: boolean
+                            example: false
+                        code:
+                            type: integer
+                            example: COMMON001
+                        message:
+                            type: string
+                            example: 잘못된 요청입니다
+
+            "500":
+                description: 서버 에러
+                schema:
+                    type: object
+                    properties:
+                        status:
+                            type: integer
+                            example: 500
+                        isSuccess:
+                            type: boolean
+                            example: false
+                        code:
+                            type: integer
+                            example: COMMON000
+                        message:
+                            type: string
+                            example: 서버 에러, 관리자에게 문의 바랍니다.
